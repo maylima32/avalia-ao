@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Criar Reserva</title>
+</head>
+
+<style>
+    /* Estilos para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.logo{
+    padding-right: 50%;
+    text-align: left;
+    width: 700px;
+    height: 400px;
+    display: flex;
+}
+/* Estilos para o título */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+h2{
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: -1000%;
+    
+}
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens se movam para a próxima linha */
+}
+
+.responsive-div {
+    flex: 1 1 300px; /* Cresce, encolhe e tem um tamanho base de 300px */
+    margin: 10px;
+}
+
+
+/* Estilos para o formulário */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Estilos para os inputs do formulário */
+form input, form select, form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Estilos para o botão de submit */
+form button[type="submit"] {
+    width: 100%;
+    background-color: #428594;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Efeito hover no botão */
+form button :hover {
+    background-color: #0f3d48;
+}
+
+/* Remover sombra do botão */
+form button {
+    box-shadow: none;
+}
+
+.button{
+    width: 100%;
+    background-color: #428594;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Efeito hover no botão */
+.button :hover {
+    background-color: #0b2e36;
+}
+
+/* Remover sombra do botão */
+.button {
+    box-shadow: none;
+}
+
+
+</style>
+<body class="container">
+    <div>
+        <h2>Planta do Restaurante</h2>
+        <p> - Observe a planta para lhe ajudar na escolha da mesa.</p>
+        <img  src="{% static 'img/planta.png' %}" class="logo"  alt="logo">
+    </div>
+  
+    <div>  
+        <form method="post">
+            <h1>Criar Reserva</h1>  
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit">Salvar</button>
+        <br>
+        <br>
+        <a href="{% url 'lista_reservas' %}" class="button">Voltar</a>
+    </form>
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                {% endfor %}
+            
+        </ul>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+    
+</body>
+</html>

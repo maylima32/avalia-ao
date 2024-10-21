@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .report-header {
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-bottom: 2px solid #1a2b8a;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #1a2b8a;
+            margin: 5px 0;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<header class="report-header">
+    <div class="header-content">
+        <h1>Restaurante Maydes</h1>
+        <p>Endereço: Av. Nossa Sra. de Fátima, 1867 - Jóquei, Teresina - PI, 64048-180</p>
+        <p>Tefefone: (86) 9 9826-8060</p>
+        <p>Emitido em: {{ data_atual }} às {{hora_atual}}</p>
+
+    </div>
+
+    <body>
+        <h2>Relatório de Reservas Cadastradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Mesa Reservada</th>
+                    <th>Data</th>
+                    <th>Entrada</th>
+                    <th>Saída</th>
+                    <th>Número de Pessoas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.cliente.nome }}</td>
+                    <td>{{ reserva.mesa.id }}</td>
+                    <td>{{ reserva.data_reserva }}</td>
+                    <td>{{ reserva.hora_entrada }}</td>
+                    <td>{{ reserva.hora_saida }}</td>
+                    <td>{{ reserva.num_pessoas }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+
+</header>
+
+</html>

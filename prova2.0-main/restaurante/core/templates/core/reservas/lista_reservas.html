@@ -1,0 +1,60 @@
+
+{% block content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lista.css' %}">
+    <br>
+    <title>Lista de Clientes</title>
+</head>
+<div class="container">
+    <h1>Lista de Reservas</h1>
+    <a href="{% url 'menu' %}" class="button">Voltar ao Menu</a>
+    <a href="{% url 'criar_reserva' %}" class="button">Criar Nova Reserva</a>
+    <a href="{% url 'gerar_relatorio_reservas' %}" target="_blank" class="button">Gerar Relatório de Reservas</a>
+    <form method="GET" action="{% url 'lista_reservas' %}">
+        <input class="pesquisa"  type="text" name="q" placeholder="Pesquisar reservas" autocomplete="off">
+        <button type="submit">Pesquisar</button>
+        {% if request.GET.q %}
+        <!-- Botão de limpar que redireciona para a página sem parâmetros -->
+        <a href="{% url 'lista_reservas' %}" class="button-deletar">Limpar</a>
+    {% endif %}
+    </form>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Data</th>
+                <th>Entrada</th>
+                <th>Saída</th>
+                <th>Número de Pessoas</th>
+                <th>Mesa Reservada</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.id }}</td>
+                <td>{{ reserva.cliente.nome }}</td>
+                <td>{{ reserva.data_reserva }}</td>
+                <td>{{ reserva.hora_entrada }}</td>
+                <td>{{ reserva.hora_saida}}</td>
+                <td>{{ reserva.num_pessoas }}</td>
+                <td>{{ reserva.mesa }}</td>
+                <td>
+                    <a href="{% url 'editar_reserva' reserva.id %}" class="button-editar">Editar</a>
+                    <a href="{% url 'deletar_reserva' reserva.id %}" class="button-deletar">Deletar</a>
+                   
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma reserva encontrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

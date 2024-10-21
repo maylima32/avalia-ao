@@ -1,0 +1,113 @@
+/* Reset básico para remover margens e padding padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f0faff; /* Cor de fundo suave */
+    color: #333333; /* Cor do texto */
+}
+
+/* Estilização do cabeçalho e do menu */
+header {
+    background: #1a2b8a; /* Cor de fundo do cabeçalho */
+    color: #ffffff; /* Cor do texto do cabeçalho */
+    padding: 10px 20px;
+    text-align: center; /* Centraliza o texto do cabeçalho */
+}
+.oi{
+    display: flex;
+    padding: 0;
+    margin-left: 85%;
+}
+
+.menu-container {
+    max-width: 1300px; /* Largura máxima do contêiner */
+    max-height: 490px;
+    margin: 20px auto; /* Centraliza o contêiner */
+    padding: 20px; /* Espaçamento interno */
+    background: #ffffff; /* Cor de fundo do contêiner */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center; /* Centraliza o texto */
+}
+h1 {
+    font-size: 2.5em; /* Tamanho da fonte do título */
+    color: rgb(60, 60, 60);
+    margin-bottom: 0px; /* Espaçamento abaixo do título */
+}
+
+.menu-grid {
+    display: grid; /* Usando grid para layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Colunas responsivas */
+    gap: 20px; /* Espaçamento entre os itens do grid */
+    
+}
+
+.menu-item {
+    background: #ffffff; /* Cor de fundo dos itens */
+    border: 2px solid #525252; /* Borda dos itens */
+    border-radius: 10px; /* Bordas arredondadas dos itens */
+    padding: 20px; /* Espaçamento interno dos itens */
+    text-align: center; /* Centraliza o texto */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transição suave */
+    position: relative; /* Para posicionamento de pseudo-elementos */
+}
+
+.menu-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #e8ab1d, #f8c471); /* Gradiente de fundo */
+    opacity: 0.1; /* Opacidade do gradiente */
+    border-radius: 10px; /* Arredonda as bordas do gradiente */
+    z-index: 0; /* Coloca atrás do conteúdo */
+}
+
+.menu-item h2 {
+    color: #35424a; /* Cor do título dos itens */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+    position: relative; /* Para posicionamento de z-index */
+    z-index: 1; /* Coloca acima do fundo */
+}
+
+.menu-item p {
+    color: #555; /* Cor do texto descritivo */
+    margin-bottom: 15px; /* Espaçamento abaixo do parágrafo */
+}
+
+.menu-button {
+    display: inline-block; /* Exibir como bloco em linha */
+    margin-top: 10px; /* Espaçamento acima do botão */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    background: #1a2b8a;/* Cor de fundo do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    text-decoration: none; /* Remove o sublinhado */
+    border-radius: 5px; /* Bordas arredondadas do botão */
+    transition: background 0.3s, transform 0.3s; /* Transição suave de cor e movimento */
+    position: relative; /* Para posicionamento de z-index */
+    z-index: 1; /* Coloca acima do fundo */
+}
+
+.menu-button:hover {
+    background: #fffb11; /* Cor do botão ao passar o mouse */
+    color: rgb(25, 14, 88);
+    transform: translateY(-3px); /* Efeito de movimento ao passar o mouse */
+}
+
+footer {
+    background: #1a2b8a;/* Cor de fundo do rodapé */
+    color: #ffffff; /* Cor do texto do rodapé */
+    text-align: center; /* Alinhamento centralizado */
+    padding: 10px 0; /* Espaçamento em torno do rodapé */
+    position: relative; /* Permite ajustar a posição se necessário */
+    bottom: 0; /* Fixa o rodapé na parte inferior */
+    width: 100%; /* Largura total */
+}

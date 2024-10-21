@@ -1,0 +1,42 @@
+
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/lista.css' %}">
+</head>
+    
+<div class="container">
+    <h1>Lista de Mesas</h1>
+    <a href="{% url 'menu' %}" class="button">Voltar ao Menu</a>
+    <a href="{% url 'criar_mesa' %}" class="button">Nova Mesa</a>
+    <a href="{% url 'gerar_relatorio_mesas' %}" target="_blank" class="button">Gerar Relatório de Mesas</a>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Capacidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mesa in mesas %}
+            <tr>
+                <td>Mesa {{ mesa.numero }}</td>
+                <td>{{ mesa.capacidade }} pessoas</td>
+                <td>
+                    <a href="{% url 'atualizar_mesa' mesa.id %}" class="button-editar">Editar</a>
+                    <a href="{% url 'deletar_mesa' mesa.id %}" class="button-deletar">Deletar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma reserva encontrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}

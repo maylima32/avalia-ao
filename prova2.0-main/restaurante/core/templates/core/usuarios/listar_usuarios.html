@@ -1,0 +1,47 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/lista.css' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Usuários</h1>
+        <a href="{% url 'menu' %}" class="button">Voltar ao Menu</a>
+        <a href="{% url 'criar_usuario' %}" class="button">Criar Usuário</a>
+        <a href="{% url 'gerar_relatorio_usuarios' %}" target="_blank" class="button">Gerar Relatório de Usuários</a>
+        <table>
+            <tr>
+                <th>Nome de Usuário</th>
+                <th>email</th>
+                <th>Status de Superusuário</th>
+                <th>Situação da Equipe</th>
+                <th>Ações</th>
+            </tr>
+            {% for usuario in usuarios %}
+            <tr>
+
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.is_superuser }}</td>
+                <td>{{ usuario.is_staff }}</td>
+                <td>
+                    <a href="{% url 'editar_usuario' usuario.id %}" class="button-editar">Editar</a>
+                    <a href="{% url 'deletar_usuario' usuario.id %}" class="button-deletar">Deletar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma reserva encontrada.</td>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</div>
+
+</html>
+{% endblock%}

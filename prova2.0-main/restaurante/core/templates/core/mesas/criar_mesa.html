@@ -1,0 +1,53 @@
+
+{% load static %}
+{% block content %}
+<style>
+    body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;    /* Alinha verticalmente */
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Cor de fundo opcional */
+}
+
+.container {
+    text-align: center; /* Centraliza o texto dentro do contêiner */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff; /* Cor de fundo do contêiner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Largura fixa opcional */
+}
+
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff; /* Cor de fundo do botão */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+</style>
+<div class="container">
+    <h1>Criar Mesa</h1>
+<form  method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Salvar</button>
+</form>
+<a href="{% url 'listar_mesas' %}" class="button">Voltar</a>
+</div>
+{% endblock %}
+

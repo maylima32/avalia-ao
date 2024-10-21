@@ -1,0 +1,79 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilo do contêiner principal */
+.container {
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #dfdddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do cabeçalho */
+h1 {
+    font-size: 2.5em; /* Tamanho da fonte do título */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+/* Botões */
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    color: white;
+    background: #1a2b8a;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background: #d3cf07;
+}
+
+
+/* Estilo do formulário */
+form {
+    margin-top: 20px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo do botão de submissão no formulário */
+form button {
+    width: 100%;
+    background-color: #2ecc71;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #27ae60;
+}

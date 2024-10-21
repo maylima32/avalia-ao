@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Faça seu login{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/lista.css' %}">
+</head>
+
+<body>
+    <header>
+        {% if user.is_authenticated%}
+        <form align="right" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div class="oi">
+                <h2>Olá, {{ user.username}}!</h2>
+                <button type="submit">Sair</button>
+            </div>
+
+        </form>
+
+        {% else %}
+        <a href="{% url 'login' %}" class="menu-button">
+            Acessar
+        </a>
+        {%endif %}
+
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+<footer>
+    <p>&copy; 2024 Restaurante Maydes. Todos os direitos reservados.</p>
+</footer>
+
+</html>

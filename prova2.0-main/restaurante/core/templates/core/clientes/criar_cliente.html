@@ -1,0 +1,17 @@
+
+
+{% block content %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/criar.css' %}">
+<div class="container">
+    <h1>Criar Cliente</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Criar Cliente</button>
+    </form>
+
+    <a href="{% url 'lista_clientes' %}" class="button">Voltar</a>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+<style>
+    /* Estilo básico para o formulário de edição de reserva */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    .container {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form input,
+    form select {
+        width: 80%;
+        padding: 10px;
+        margin: 5px 0 15px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    form button {
+        background-color: #3498db;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    form button:hover {
+        background-color: #2980b9;
+    }
+
+    .button-voltar {
+        background-color: #e74c3c;
+        margin-top: 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 15px;
+        color: white;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        text-align: center;
+    }
+
+    .button-voltar:hover {
+        background-color: #c0392b;
+    }
+</style>
+
+<div class="container">
+    <h1>Editar Reserva</h1>
+    <form method="POST">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label for="data_reserva">Data:</label>
+        <input type="date" name="data_reserva" id="data_reserva" value="{{ reserva.data_reserva }}" required>
+
+        <label for="hora_entrada">Hora:</label>
+        <input type="time" name="hora_entrada" id="hora_entrada" value="{{ reserva.hora_entrada }}" required>
+
+        <label for="hora_saida">Hora:</label>
+        <input type="time" name="hora_saida" id="hora_saida" value="{{ reserva.hora_saida }}" required>
+
+        <label for="num_pessoas">Número de Pessoas:</label>
+        <input type="number" name="num_pessoas" id="num_pessoas" value="{{ reserva.num_pessoas }}" required>
+
+        <label for="mesa">Mesa:</label>
+        <select name="mesa" id="mesa" required>
+            {% for mesa in mesas %}
+            <option value="{{ mesa.id }}" {% if mesa.id == reserva.mesa.id %}selected{% endif %}>Mesa {{ mesa.numero }}</option>
+ ({{mesa.capacidade}} pessoas)</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Atualizar Reserva</button>
+    </form>
+
+    <a href="{% url 'lista_reservas' %}" class="button-voltar">Voltar</a>
+</div>

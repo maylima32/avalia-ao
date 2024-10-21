@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .report-header {
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-bottom: 2px solid #1a2b8a;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #1a2b8a;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<header class="report-header">
+    <body>
+
+        <h1>Restaurante Maydes</h1>
+        <p>Endereço: Av. Nossa Sra. de Fátima, 1867 - Jóquei, Teresina - PI, 64048-180</p>
+        <p>Tefefone: (86) 9 9826-8060</p>
+        <p>Emitido em: {{ data_atual }} às {{hora_atual}}</p>
+
+        <h2>Relatório de Mesas Cadastradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID da Mesa</th>
+                    <th>Capacidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mesa in mesas %}
+                <tr>
+                    <td>{{ mesa.id }}</td>
+                    <td>{{ mesa.capacidade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+    
+</header>
+
+</html>

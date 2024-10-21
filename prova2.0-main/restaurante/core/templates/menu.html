@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% block title %}Restaurante Maydes {% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<style>
+    .logo{
+        width: 39%;
+        height: 450px;
+        padding-right: 10px;
+        padding-top: 70px;
+        border: 30px;
+    }
+</style>
+
+<div class="menu-container">
+    <img align="left" src="{% static 'img/logo2.jpg' %}" class="logo"  alt="logo">
+    <h1> Menu</h1>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h2>Clientes</h2>
+            <p>Visualize e gerencie os clientes</p>
+            
+            <a href="{% url 'lista_clientes' %}" class="menu-button">Ver Clientes</a>
+        </div>
+        <div class="menu-item">
+
+            <h2>Reservas</h2>
+            <p>Visualize e gerencie as reservas.</p>
+            <a href="{% url 'lista_reservas' %}" class="menu-button">Ver Reservas</a>
+        </div>
+        <div class="menu-item">
+            <h2>Mesas</h2>
+            <p>Visualize e gerencie as mesas.</p>
+            <a href="{% url 'listar_mesas' %}" class="menu-button">Ver Mesas</a>
+        </div>
+        <div class="menu-item">
+            <h2>Usuários</h2>
+            <p>Visualize e gerencie os usuários.</p>
+            <a href="{% url 'listar_usuarios' %}" class="menu-button">Ver Usuários</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
